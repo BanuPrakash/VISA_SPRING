@@ -194,6 +194,8 @@ Active Profiles: dev
 ```
 
 Different ways of wiring:
+```
+
 1)
 @Service
 public class AppService {
@@ -227,3 +229,4 @@ public class AppService {
     public void setDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
+```
