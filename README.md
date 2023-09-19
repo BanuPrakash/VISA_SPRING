@@ -192,3 +192,38 @@ More Run/Debug
 Active Profiles: dev
 
 ```
+
+Different ways of wiring:
+1)
+@Service
+public class AppService {
+    @Autowired
+    private EmployeeDao employeeDao;
+
+2) using Constructor:
+@Service
+@RequiredArgsConstructor
+public class AppService {
+    private final EmployeeDao employeeDao; // constructor dependency injection
+
+3) using implicit constructor:
+
+@Service
+public class AppService {
+    private final EmployeeDao employeeDao; // constructor dependency injection
+    @Autowired
+    public AppService(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
+    }
+
+4) using Setter dependency Injection
+
+
+@Service
+public class AppService {
+    private  EmployeeDao employeeDao; // constructor dependency injection
+    
+    @Autowired
+    public void setDao(EmployeeDao employeeDao) {
+        this.employeeDao = employeeDao;
+    }
