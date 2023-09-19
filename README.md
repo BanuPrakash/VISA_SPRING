@@ -114,6 +114,81 @@ public class AppService {
 
 ```
 
+Spring Boot is a framework on top of Spring Framework
+* Highly opinionated framework ==> 
+1) Configures Tomcat embedded server out of box if we choose to build web application
+2) creates a pool of database connections if we choose to connect to RDBMS
+* lots of configuration comes out of the box
+
+SpringApplication.run() to start Spring Container instead of 
+
+ApplicationContext ctx = new AnnotationConfigApplicationContext();
+
+@SpringBootApplication is 3 in one:
+1) @ComponentScan
+scans of above mentioned 7 annotations and creates instances of those classes
+
+2) @EnableAutoConfiguration
+    creates built in services like --> EmbeddedTomcat Container
+
+3) @Configuration
+
+```
+
+Description:
+
+Field employeeDao in com.visa.prj.service.AppService required a single bean, but 2 were found:
+	- employeeDaoJdbcImpl
+	- employeeDaoMongoImpl
+
+```
+Solution 1:
+
+```
+@Repository
+@Primary
+public class EmployeeDaoMongoImpl implements  EmployeeDao{
+
+@Repository
+public class EmployeeDaoJdbcImpl implements  EmployeeDao{
+
+```
+
+Solution 2:
+
+```
+@Repository
+public class EmployeeDaoMongoImpl implements  EmployeeDao{
+
+@Repository
+public class EmployeeDaoJdbcImpl implements  EmployeeDao{
 
 
+@Service
+public class AppService {
+    @Autowired
+    @Qualifier("employeeDaoJdbcImpl")
+    private EmployeeDao employeeDao;
+```
 
+Solution 2: using Profiles
+
+```
+@Repository
+@Profile("prod")
+public class EmployeeDaoMongoImpl implements  EmployeeDao{
+
+@Repository
+@Profile("dev")
+public class EmployeeDaoJdbcImpl implements  EmployeeDao{
+
+@Service
+public class AppService {
+    @Autowired
+    private EmployeeDao employeeDao;
+
+More Run/Debug
+
+Active Profiles: dev
+
+```
