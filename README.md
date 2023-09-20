@@ -213,7 +213,7 @@ public class AppService {
 @Service
 public class AppService {
     private final EmployeeDao employeeDao; // constructor dependency injection
-    @Autowired
+    // @Autowired optional
     public AppService(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
@@ -230,3 +230,58 @@ public class AppService {
         this.employeeDao = employeeDao;
     }
 ```
+
+JPA --> Java Persistence API
+
+ORM --> Object Relational Mapping
+
+Java Class <----> RDBMS table
+instance variables <----> columns of database
+
+```
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name="products")
+public class Product {
+    @Id
+    private int id;
+    private String name;
+    private double price;
+    @Column(name="qty")
+    private int quantity;
+}
+
+
+ORM generates SQL for CRUD operations
+
+  EntityManager em;
+  @Override
+   public void addProduct(Product product)  {
+        em.save(product);
+  }
+
+```
+
+ORM Frameworks:
+1) Hibernate
+2) KODO
+3) TopLink
+4) EclipseLink
+5) OpenJPA
+6) JDO
+
+JPA Specification for ORM frameworks
+
+PersistenceContext, EntityManager, DataSource --> Pool of database connection, EntityManagerFactory
+
+======
+
+@Bean ==> Factory method
+
+
+
+
+
+
