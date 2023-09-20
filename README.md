@@ -335,6 +335,8 @@ public class EmployeeDaoJdbcImpl implements EmployeeDao {
 
 --
 
+Scope of Bean:
+```
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class EmployeeDaoJdbcImpl implements EmployeeDao {
@@ -351,9 +353,49 @@ public class EmployeeService {
     @Autowired
     EmployeeDao empDao;
 }
-
+```
 
 Spring Data Jpa: simplifies way you use JPA
 * configures DataSource , EntityManagerFactory, EntityManager out of the box
 
 https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
+
+SQL and JP-QL [ Java Persistence Query Language]
+```
+
+books
+
+book_id book_title  price
+
+@Entity
+@Table(name="books")
+public class Book {
+    @Id
+    @Column(name="book_id")
+    id
+    @Column(name="book_title")
+    title;
+    @Column(name="price")
+    amount;
+}
+
+select * from books
+select book_title, price from books;
+
+from Book
+select title, amount from Book
+update Book set amount = 999 where id = 2
+
+from Object
+
+
+User
+    email
+    password
+
+List<User> findByEmailAndPassword(String email, String password);
+
+```
+
+
+
