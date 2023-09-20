@@ -397,5 +397,48 @@ List<User> findByEmailAndPassword(String email, String password);
 
 ```
 
+Transactions:
+In a database management system, a transaction is a single unit of logic or work, sometimes made up of multiple operations. 
+Any logical calculation done in a consistent mode in a database is known as a transaction. 
+One example is a transfer from one bank account to another: the complete transaction requires subtracting the amount to be transferred from one account and adding that same amount to the other.
+
+A database transaction, by definition, must be atomic (it must either be complete in its entirety or have no effect whatsoever), consistent (it must conform to existing constraints in the database), isolated (it must not affect other transactions) and durable (it must get written to persistent storage).Database practitioners often refer to these properties of database transactions using the acronym ACID.
+
+
+Declarative Transaction or Programmatic Transaction
+
+
+Programmatic Transaction:
+```
+public void transferFunds(Account fromAcc, Account toAcc, double amt) {
+    Connection con = ...
+    try {
+        con.setAutoCommit(false);
+        PreparedStatement ps1 = con.prepareStatement("update accounts ... where id =" + fromAcc.getAcc());
+        PreparedStatement ps2 = con.prepareStatement("update accounts ... where id =" + toAcc.getAcc());
+        PreparedStatement ps3 = con.prepareStatement("insert into transaction_table ...");
+        sendSms(); // service
+        ///
+
+        con.commit();        
+    } catch(Exception ex) {
+        con.rollback();
+    }
+}
+
+Declarative Tx:
+@Transactional
+public void transferFunds(Account fromAcc, Account toAcc, double amt) {
+    ..
+}
+```
+
+Association Mapping
+* oneToMany
+* ManyToOne
+* OneToOne
+* ManyToMany
+
+
 
 
