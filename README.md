@@ -281,7 +281,79 @@ PersistenceContext, EntityManager, DataSource --> Pool of database connection, E
 @Bean ==> Factory method
 
 
+* need to instantiate 3rd party class and after that manged by Spring Framework
+
+@Configuration
+public class AppConfig {
+    @Bean("postgres")
+    public DataSource getDataSource() {
+        ComboPooledDataSource cpds = new ComboPooledDataSource();
+        cpds.setDriverClass( "org.postgresql.Driver" ); //loads the jdbc driver            
+        cpds.setJdbcUrl( "jdbc:postgresql://localhost/testdb" );
+        cpds.setUser("swaldman");                                  
+        cpds.setPassword("test-password");                                  
+	
+        // the settings below are optional -- c3p0 can work with defaults
+        cpds.setMinPoolSize(5);                                     
+        cpds.setAcquireIncrement(5);
+        cpds.setMaxPoolSize(20);
+            
+        return cpds;
+    }
+
+    @Bean
+    public LocalContainerEntityManagerFactory emf(DataSource ds) {
+        LocalContainerEntityManagerFactory emf = new LocalContainerEntityManagerFactory();
+        emf.setDataSource(ds);
+        emf.setJpaVendor(new HibernateJpaVendor());
+        emf.setPackagestoScan("com.visa.prj.entity");
+        // properties
+        return emf;
+    }
+}
+
+@Repository 
+public class EmployeeDaoJpaImpl implements EmployeeDao {
+    @PersistenceContext
+    EntityManager em;
+
+      public void addEmployee(Employee e) {
+        em.persist(e);
+      }
+}
+
+@Repository
+public class EmployeeDaoJdbcImpl implements EmployeeDao {
+    @Autowired
+    DataSource ds;
+
+    public void addEmployee(Employee e) {
+        Connection con = ds.getConnection();
+        //...
+    }
+}
+
+--
+
+@Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+public class EmployeeDaoJdbcImpl implements EmployeeDao {
+
+}
+@Service
+public class AppService {
+     @Autowired
+    EmployeeDao empDao;
+}
+
+@Service
+public class EmployeeService {
+    @Autowired
+    EmployeeDao empDao;
+}
 
 
+Spring Data Jpa: simplifies way you use JPA
+* configures DataSource , EntityManagerFactory, EntityManager out of the box
 
-
+https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
