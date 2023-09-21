@@ -447,7 +447,7 @@ Task:
 Vehicle Rental application
 
 New database 
-spring.datasource.url=jdbc:mysql://localhost:3306/RENTAL_DB?createDatabaseIfNotExists=true
+spring.datasource.url=jdbc:mysql://localhost:3306/RENTAL_DB?createDatabaseIfNotExist=true
 
 Customers --> same as orderapp
 
@@ -462,12 +462,12 @@ RENTAL_ID   CUSTOMER_FK     VECHICLE_FK     RENT_FROM   RENT_TO     AMOUNT
 2) insert few vehicles
 3) rent a vehicle
 rentals
-RENTAL_ID   CUSTOMER_FK           VECHICLE_FK     RENT_FROM       RENT_TO     AMOUNT
+RENTAL_ID   CUSTOMER_FK           VEHICLE_FK     RENT_FROM       RENT_TO     AMOUNT
 123         gavin@visa.com          KA50N1234      18-9-2023      NULL          0
 
 4) return the vechile
 rentals
-RENTAL_ID   CUSTOMER_FK           VECHICLE_FK     RENT_FROM       RENT_TO     AMOUNT
+RENTAL_ID   CUSTOMER_FK           VEHICLE_FK     RENT_FROM       RENT_TO     AMOUNT
 123         gavin@visa.com          KA50N1234      18-9-2023      21-9-2023       6000
 
 
