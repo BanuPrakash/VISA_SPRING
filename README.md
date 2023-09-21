@@ -472,3 +472,34 @@ RENTAL_ID   CUSTOMER_FK           VEHICLE_FK     RENT_FROM       RENT_TO     AMO
 
 
 ```
+
+Task 2:
+
+Assign employee to Project
+
+```
+projects [Project]
+pid name start_date end_end client
+
+employees [ Employee]
+email first_name last_name start_date  end_date
+
+project_employees [ProjectEmployee ]
+
+id pid email            start_date         end_date    role
+1    1   smitha@visa.com     2012-09-22  2014-10-30      JR.DEVELOPER
+
+1) Create tables
+2) in backend insert records for projects and employees
+3) Assign Employee to a project
+
+id pid email            start_date         end_date    role
+1  1   smitha@visa.com     2012-09-22      NULL      JR.DEVELOPER
+
+4) employee released from project
+
+```
+
+
+
+
