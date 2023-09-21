@@ -439,6 +439,36 @@ Association Mapping
 * OneToOne
 * ManyToMany
 
+=======
+
+Task:
+
+```
+Vehicle Rental application
+
+New database 
+spring.datasource.url=jdbc:mysql://localhost:3306/RENTAL_DB?createDatabaseIfNotExists=true
+
+Customers --> same as orderapp
+
+vehicles 
+REG_NO FUEL_TYPE COST_PER_DAY VEHICLE_TYPE
+
+rentals
+RENTAL_ID   CUSTOMER_FK     VECHICLE_FK     RENT_FROM   RENT_TO     AMOUNT
 
 
+1) insert few customers
+2) insert few vehicles
+3) rent a vehicle
+rentals
+RENTAL_ID   CUSTOMER_FK           VECHICLE_FK     RENT_FROM       RENT_TO     AMOUNT
+123         gavin@visa.com          KA50N1234      18-9-2023      NULL          0
 
+4) return the vechile
+rentals
+RENTAL_ID   CUSTOMER_FK           VECHICLE_FK     RENT_FROM       RENT_TO     AMOUNT
+123         gavin@visa.com          KA50N1234      18-9-2023      21-9-2023       6000
+
+
+```
