@@ -13,9 +13,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+//@Component
 @RequiredArgsConstructor
-@Order(2)
+//@Order(2)
 public class OrderClient implements CommandLineRunner {
     private final OrderService orderService;
     @Override
