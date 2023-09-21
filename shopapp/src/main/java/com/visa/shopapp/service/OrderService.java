@@ -11,6 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +57,12 @@ public class OrderService {
         orderDao.save(order); // cascade takes care of persisting LineItems
     }
 
+    public List<Order> getOrders() {
+        return orderDao.findAll();
+    }
+    public List<Order> byDate(String orderDate) {
+        return orderDao.getOrder(orderDate);
+    }
     public List<Product> byRange(double low, double high) {
         return  productDao.getByRange(low, high);
     }
