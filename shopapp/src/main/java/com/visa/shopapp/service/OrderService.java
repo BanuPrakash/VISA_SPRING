@@ -1,6 +1,10 @@
 package com.visa.shopapp.service;
 
+import com.visa.shopapp.dao.CustomerDao;
+import com.visa.shopapp.dao.OrderDao;
 import com.visa.shopapp.dao.ProductDao;
+import com.visa.shopapp.entity.LineItem;
+import com.visa.shopapp.entity.Order;
 import com.visa.shopapp.entity.Product;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +18,40 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OrderService {
     private final ProductDao productDao;
+    private final OrderDao orderDao;
+    private final CustomerDao customerDao;
 //    public OrderService(ProductDao productDao) {
 //        this.productDao = productDao;
 //    }
+
+    /*
+        {
+            "customer": {"email": "harry@visa.com"},
+            "items": [
+                {"product": {id: 3}, "qty": 2},
+                {"product": {id: 1}, "qty": 3}
+            ]
+        }
+
+     */
+    @Transactional
+    public  void placeOrder(Order order) {
+        double total = 0.0;
+        List<LineItem> items = order.getItems();
+        for(LineItem item : items) {
+            Product p = productDao.findById(item.getProduct().getId()).get();
+            if(p.getQuantity() < item.getQty()) {
+                throw new IllegalArgumentException("No Sufficient Product "
+                        + p.getName() + " in stock");
+            }
+            item.setAmount(p.getPrice() * item.getQty());
+
+            p.setQuantity(p.getQuantity() - item.getQty()); // Dirty Checking
+            total += item.getAmount();
+        }
+        order.setTotal(total);
+        orderDao.save(order); // cascade takes care of persisting LineItems
+    }
 
     public List<Product> byRange(double low, double high) {
         return  productDao.getByRange(low, high);

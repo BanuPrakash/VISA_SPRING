@@ -7,10 +7,12 @@ import com.visa.shopapp.entity.Product;
 import com.visa.shopapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
+@Order(1)
 public class ProductClient implements CommandLineRunner {
     private final OrderService service;
     // code gets executed automatically once Spring container is created
@@ -20,7 +22,7 @@ public class ProductClient implements CommandLineRunner {
         //listProducts();
 //        getById();
 //        listByRange();
-        updateProduct();
+       // updateProduct();
     }
 
     private void updateProduct() {
