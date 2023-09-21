@@ -465,7 +465,7 @@ rentals
 RENTAL_ID   CUSTOMER_FK           VEHICLE_FK     RENT_FROM       RENT_TO     AMOUNT
 123         gavin@visa.com          KA50N1234      18-9-2023      NULL          0
 
-4) return the vechile
+4) return the vehicle
 rentals
 RENTAL_ID   CUSTOMER_FK           VEHICLE_FK     RENT_FROM       RENT_TO     AMOUNT
 123         gavin@visa.com          KA50N1234      18-9-2023      21-9-2023       6000
