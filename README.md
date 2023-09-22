@@ -595,3 +595,105 @@ WHERE
 https://datamodels.databases.biz/
 
 Joins
+
+
+
+new state, managed state/ persistent state, detached and destroyed state.
+
+-----------------
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+Spring Web Module:
+1) provides Embedded TomcatServer / Container
+2) DispatcherServlet --> FrontController [*]
+3) Jackson library --> used for Java <---> JSON
+
+RESTful Web Services
+
+* Resources --> is what is present on server
+* Representation --> state of the resource in various format [ XML / JSON / CSV / ATOM ...]
+
+HTTP Protocol
+* URL to identify resource [plural nouns --> products, orders , customers]
+http://localhost:8080/api/products
+
+* HTTP methods for actions
+CREATE --> POST
+READ --> GET
+UPDATE --> PUT / PATCH
+DELETE --> DELETE
+
+1) GET
+http://localhost:8080/api/products
+get all products
+
+2) GET
+http://localhost:8080/api/products/4
+
+use PathParameter [4] is by ID --> a single product
+
+GET
+http://localhost:8080/api/customers/harry@visa.com/orders
+
+3) GET
+http://localhost:8080/api/products?category=mobile
+
+QueryParameter --> subset 
+
+http://localhost:8080/api/products?page=1&size=20
+
+4) POST
+http://localhost:8080/api/products
+
+payload contains new product data to be added to "products"
+
+
+5) PUT
+http://localhost:8080/api/products/3
+
+payload contains new product data to be updated to product with id "3" in "products"
+
+
+6) DELETE --> Never used
+http://localhost:8080/api/products/4
+
+delete a product with id "4"
+
+---------------------
+
+@RestController
+@RequestMapping("api/products")
+public class ProductController {
+
+    @GetMapping()
+    public List<Product> getProducts() {
+        return orderService.getProducts();
+    }
+
+
+}
+
+
+Http Header:
+Accept: text/xml
+
+Accept: application/json
+
+HttpMessageConverter
+ContentNegotiationHandler
+
+Jackson Library
+
+Jettison / Moxy / GSON
+
+[
+    {id:1, name : 'A'},
+    {id: 2, name: 'B'}
+]
+
+
+
