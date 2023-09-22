@@ -3,10 +3,8 @@ package com.visa.shopapp.api;
 import com.visa.shopapp.entity.Product;
 import com.visa.shopapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,13 +15,26 @@ public class ProductController {
     private final OrderService orderService;
 
     // http://localhost:8080/api/products
+    // http://localhost:8080/api/products?low=500&high=50000
     @GetMapping()
-    public List<Product> getProducts() {
-        return orderService.getProducts();
+    public List<Product> getProducts(@RequestParam(name="low", defaultValue = "0.0") double low,
+                                     @RequestParam(name="high", defaultValue = "0.0") double high
+                                     ) {
+        if(low == 0.0 && high == 0.0) {
+            return orderService.getProducts();
+        } else {
+            return orderService.byRange(low,high);
+        }
     }
     // http://localhost:8080/api/products/4
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable("id") int id) {
         return orderService.getProductById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product addProduct(@RequestBody Product p) {
+        return orderService.addProduct(p);
     }
 }

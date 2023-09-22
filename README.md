@@ -695,5 +695,7 @@ Jettison / Moxy / GSON
     {id: 2, name: 'B'}
 ]
 
+Content-type: application/json
+
 
 
