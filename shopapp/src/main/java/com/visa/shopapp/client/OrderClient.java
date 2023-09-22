@@ -1,5 +1,6 @@
 package com.visa.shopapp.client;
 
+import com.visa.shopapp.dto.ReportDTO;
 import com.visa.shopapp.entity.Customer;
 import com.visa.shopapp.entity.LineItem;
 import com.visa.shopapp.entity.Product;
@@ -27,12 +28,10 @@ public class OrderClient implements CommandLineRunner {
     }
 
     private void printReport() {
-        List<Object[]> data = orderService.getReport("harry@visa.com");
-        for(Object[] objects : data) {
-            for(Object obj : objects) {
-                System.out.print(obj + "\t");
-            }
-            System.out.println();
+        List<ReportDTO> data = orderService.getReport("harry@visa.com");
+        for(ReportDTO report : data) {
+
+            System.out.println(report.getEmail() +", " + report.getTotal());
         }
     }
 

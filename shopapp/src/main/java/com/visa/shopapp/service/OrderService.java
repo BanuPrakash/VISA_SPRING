@@ -3,6 +3,7 @@ package com.visa.shopapp.service;
 import com.visa.shopapp.dao.CustomerDao;
 import com.visa.shopapp.dao.OrderDao;
 import com.visa.shopapp.dao.ProductDao;
+import com.visa.shopapp.dto.ReportDTO;
 import com.visa.shopapp.entity.LineItem;
 import com.visa.shopapp.entity.Order;
 import com.visa.shopapp.entity.Product;
@@ -89,7 +90,7 @@ public class OrderService {
         }
     }
 
-    public List<Object[]> getReport(String email) {
+    public List<ReportDTO> getReport(String email) {
         return orderDao.getReport(email);
     }
 }

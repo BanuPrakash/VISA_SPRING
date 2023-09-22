@@ -579,7 +579,7 @@ https://www.baeldung.com/spring-data-jpa-projections
 
 ```
 SELECT 
- *
+ c.first_name, c.email, o.order_date, o.total, p.name, p.price, i.qty, i.amount
 FROM 
   customers c,
   orders o,
