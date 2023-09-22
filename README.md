@@ -503,7 +503,74 @@ id pid email            start_date         end_date    role
 	long days = ChronoUnit.DAYS.between(LocalDate.of(2023,9,10),LocalDate.of(2023,9,14));
 	
 
+=============
 
+Day 4
 
+@OneToMany
+* @JoinColumn ==> introduces FK on Child side
+* cascade
+* fetch => DEFAULT is LAZY , we can set it to EAGER
 
+@ManyToOne
+* @JoinColumn ==> introduces FK on owning side
+* default fetch is EAGER
+
+---
+
+Customer c = customerDao.findById("sam@visa.com").get();
+
+List<Order> orders = c.getOrders();
+
+----
+
+Employee <---> Laptop
+```
+
+laptops
+serial_no   name    details ram   size  employee_fk
+Ylwvr091    Intel                       leena@visa.com
+2lw4qb15    Mac                         julia@visa.com
+Plzd2324    Mac                         sam@visa.com 
+employees
+
+employees
+email             name  
+sam@visa.com        
+julia@visa.com
+leena@visa.com
+
+public class Laptop {
+
+    @OneToOne
+    @JoinColumn("employee_fk")
+    Employee emp;
+}
+
+public class Employee {
+    @OneToOne(mappedBy="emp")
+    Laptop laptop;
+}
+```
+
+ManyToMany
+
+movies
+mid name
+34  A
+83  B
+72  C
+
+actors
+aid name
+55  G0
+62  G1
+72  G3
+
+movies_actors
+mid     aid
+34      G1
+34      G3
+83      G0
+83      G1
 
