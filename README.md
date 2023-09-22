@@ -574,3 +574,24 @@ mid     aid
 83      G0
 83      G1
 
+Query:
+https://www.baeldung.com/spring-data-jpa-projections
+
+```
+SELECT 
+ *
+FROM 
+  customers c,
+  orders o,
+  line_items i,
+  products p
+WHERE
+  c.email = 'harry@visa.com' 
+  AND o.customer_fk = c.email
+  AND o.oid = i.order_fk
+  AND i.product_fk = p.id
+```
+
+https://datamodels.databases.biz/
+
+Joins

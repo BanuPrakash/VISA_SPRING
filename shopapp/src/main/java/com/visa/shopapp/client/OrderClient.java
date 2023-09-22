@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Component
+@Component
 @RequiredArgsConstructor
 //@Order(2)
 public class OrderClient implements CommandLineRunner {
@@ -22,7 +22,18 @@ public class OrderClient implements CommandLineRunner {
     public void run(String... args) throws Exception {
         //getOrders();
        // newOrder();
-        byDate();
+//        byDate();
+        printReport();
+    }
+
+    private void printReport() {
+        List<Object[]> data = orderService.getReport("harry@visa.com");
+        for(Object[] objects : data) {
+            for(Object obj : objects) {
+                System.out.print(obj + "\t");
+            }
+            System.out.println();
+        }
     }
 
     private void getOrders() {

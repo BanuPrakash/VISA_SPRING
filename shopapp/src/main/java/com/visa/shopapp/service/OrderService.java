@@ -88,4 +88,8 @@ public class OrderService {
             return null;
         }
     }
+
+    public List<Object[]> getReport(String email) {
+        return orderDao.getReport(email);
+    }
 }
