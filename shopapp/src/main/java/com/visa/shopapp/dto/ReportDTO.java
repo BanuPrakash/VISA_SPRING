@@ -15,8 +15,8 @@ public class ReportDTO {
     String email;
     Date orderDate;
     double total;
-//    String name;
-//    double price;
-//    int quantity;
-//    double amount;
+    String name;
+    double price;
+    int quantity;
+    double amount;
 }

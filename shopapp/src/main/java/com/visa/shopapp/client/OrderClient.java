@@ -31,7 +31,7 @@ public class OrderClient implements CommandLineRunner {
         List<ReportDTO> data = orderService.getReport("harry@visa.com");
         for(ReportDTO report : data) {
 
-            System.out.println(report.getEmail() +", " + report.getTotal());
+            System.out.println(report);
         }
     }
 

@@ -27,9 +27,11 @@ public interface OrderDao extends JpaRepository<Order, Integer> {
     @Query("SELECT " +
             "new com.visa.shopapp.dto.ReportDTO" +
             "(c.firstName, c.email, o.orderDate, " +
-            "o.total)" +
+            "o.total, p.name, p.price, i.qty, i.amount)" +
             " FROM Order o inner  join o.customer c " +
-            " WHERE c.email = :cust")
+            " inner join o.items i " +
+            "inner join i.product p " +
+            "WHERE c.email = :cust")
     List<ReportDTO> getReport(@Param("cust") String email);
 
 }
