@@ -25,6 +25,6 @@ public class Customer {
     @Column(name="last_name", length = 100)
     private String lastName;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders = new ArrayList<>();
+//    @OneToMany(mappedBy = "customer")
+//    private List<Order> orders = new ArrayList<>();
 }

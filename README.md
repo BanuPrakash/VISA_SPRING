@@ -724,5 +724,28 @@ Characteristics of RESTful:
 @PathVariable [ PathParameter /]
 @RequestParam [ Query Parameter ?]
 
+============
+
+AOP -> Aspect Oriented Programming
+
+Cross-Cutting Concerns
 
 
+public void transferFunds(..) {
+    isValidCustomer
+    begin Tx
+    log tx started
+        debit from
+        log debit done
+        credit
+        log credit done
+    commit tx
+    log transaction success
+}
+
+Aspect: Concern which leads code tangling and code scattering
+JoinPoint: place in your code where Aspect can be weaved [ any method / any exception]
+PointCut: selected JoinPoint
+Advice: Before, After, Around, AfterThrowing, AfterReturing
+
+https://docs.spring.io/spring-framework/docs/2.0.x/reference/aop.html

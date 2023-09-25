@@ -28,10 +28,10 @@ public class OrderController {
     // http://localhost:8080/api/orders?order-date=20-09-2023
     @GetMapping
     public List<Order> getOrders(@RequestParam(name="order-date", required = false)
-                                     @DateTimeFormat(pattern = "dd-MM-yyyy") Date orderDate) {
+                                    String orderDate) {
         if(orderDate != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-           return orderService.byDate(sdf.format(orderDate));
+          //  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+           return orderService.byDate(orderDate);
         } else {
             return orderService.getOrders();
         }
