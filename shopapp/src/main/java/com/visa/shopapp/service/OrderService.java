@@ -1,5 +1,6 @@
 package com.visa.shopapp.service;
 
+import com.visa.shopapp.api.EntityNotFoundException;
 import com.visa.shopapp.dao.CustomerDao;
 import com.visa.shopapp.dao.OrderDao;
 import com.visa.shopapp.dao.ProductDao;
@@ -70,7 +71,7 @@ public class OrderService {
     }
 
     @Transactional
-    public Product updateProduct(int id, double price) {
+    public Product updateProduct(int id, double price) throws EntityNotFoundException {
         productDao.updateProductPrice(id, price);
         return getProductById(id);
     }
@@ -82,13 +83,12 @@ public class OrderService {
     public Product addProduct(Product p) {
         return productDao.save(p);
     }
-    public Product getProductById(int id) {
+    public Product getProductById(int id) throws EntityNotFoundException {
         Optional<Product> opt = productDao.findById(id);
         if(opt.isPresent()) {
             return opt.get();
-        } else {
-            return null;
         }
+        throw new EntityNotFoundException("product with id " + id + " doesn't exist!!!");
     }
 
     public List<ReportDTO> getReport(String email) {

@@ -19,7 +19,7 @@ public class ValidationAspect {
                         .getAnnotation(ValidateInput.class);
 
         if(args.length > 0 && args[0] instanceof Integer data) {
-            if(data <= validateInput.min()) {
+            if(data < validateInput.min()) {
                 throw new IllegalArgumentException("value should be greater than zero");
             }
         }

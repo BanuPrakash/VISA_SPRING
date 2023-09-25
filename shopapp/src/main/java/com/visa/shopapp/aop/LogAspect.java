@@ -2,10 +2,7 @@ package com.visa.shopapp.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -36,5 +33,10 @@ public class LogAspect {
         long endTime = System.currentTimeMillis();
         log.info("Total time " + (endTime - startTime) + " ms");
         return ret;
+    }
+
+    @AfterThrowing(value= "execution(* com.visa.shopapp.api.*.*(..))", throwing = "ex")
+    public void logException(JoinPoint jp, Exception ex) {
+        log.info(ex.getMessage());
     }
 }

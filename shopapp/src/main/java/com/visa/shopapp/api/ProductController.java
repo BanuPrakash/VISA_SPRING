@@ -3,8 +3,10 @@ package com.visa.shopapp.api;
 import com.visa.shopapp.aop.ValidateInput;
 import com.visa.shopapp.entity.Product;
 import com.visa.shopapp.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/products")
 @RequiredArgsConstructor
+@Validated
 public class ProductController {
     private final OrderService orderService;
 
@@ -29,21 +32,21 @@ public class ProductController {
     }
     // http://localhost:8080/api/products/4
     @GetMapping("/{id}")
-    @ValidateInput(min = 3)
-    public Product getProductById(@PathVariable("id") int id) {
+    @ValidateInput(min = 0)
+    public Product getProductById(@PathVariable("id") int id) throws EntityNotFoundException {
         return orderService.getProductById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Product addProduct(@RequestBody Product p) {
+    public Product addProduct(@Valid @RequestBody Product p) {
         return orderService.addProduct(p);
     }
 
     // http://localhost:8080/api/products/3
     // {"price": 45344.22} payload
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable("id") int id, @RequestBody Product p) {
+    public Product updateProduct(@PathVariable("id") int id, @RequestBody Product p) throws EntityNotFoundException {
         orderService.updateProduct(id, p.getPrice());
         return orderService.getProductById(id);
     }

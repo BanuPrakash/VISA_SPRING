@@ -3,6 +3,7 @@ package com.visa.shopapp.client;
 
 import java.util.List;
 
+import com.visa.shopapp.api.EntityNotFoundException;
 import com.visa.shopapp.entity.Product;
 import com.visa.shopapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,7 @@ public class ProductClient implements CommandLineRunner {
        // updateProduct();
     }
 
-    private void updateProduct() {
+    private void updateProduct() throws EntityNotFoundException {
         service.updateProduct(1, 9999.00);
     }
 
@@ -38,7 +39,12 @@ public class ProductClient implements CommandLineRunner {
     }
 
     private void getById() {
-        Product p = service.getProductById(3);
+        Product p = null;
+        try {
+            p = service.getProductById(3);
+        } catch (EntityNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println(p);
     }
 
