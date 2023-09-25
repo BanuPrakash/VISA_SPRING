@@ -37,4 +37,12 @@ public class ProductController {
     public Product addProduct(@RequestBody Product p) {
         return orderService.addProduct(p);
     }
+
+    // http://localhost:8080/api/products/3
+    // {"price": 45344.22} payload
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable("id") int id, @RequestBody Product p) {
+        orderService.updateProduct(id, p.getPrice());
+        return orderService.getProductById(id);
+    }
 }

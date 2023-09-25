@@ -4,6 +4,7 @@ import com.visa.shopapp.dao.CustomerDao;
 import com.visa.shopapp.dao.OrderDao;
 import com.visa.shopapp.dao.ProductDao;
 import com.visa.shopapp.dto.ReportDTO;
+import com.visa.shopapp.entity.Customer;
 import com.visa.shopapp.entity.LineItem;
 import com.visa.shopapp.entity.Order;
 import com.visa.shopapp.entity.Product;
@@ -92,5 +93,10 @@ public class OrderService {
 
     public List<ReportDTO> getReport(String email) {
         return orderDao.getReport(email);
+    }
+
+    public Customer getByEmail(String email) {
+        System.out.println(email);
+        return customerDao.findById(email).get();
     }
 }

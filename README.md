@@ -697,5 +697,32 @@ Jettison / Moxy / GSON
 
 Content-type: application/json
 
+==============
+
+RESTful WS
+
+Accept: application/json
+Content-type:application/json
+
+
+Characteristics of RESTful:
+1) client-server 
+2) Stateless
+3) Uniform URL
+
+@RestController [CSR] instead of @Controller [SSR]
+@RequestMapping
+@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+
+@ResponseBody [ optional] Java --> JSON / XML
+
+@RequestBody Representation =--> Java 
+
+@PathVariable [ PathParameter /]
+@RequestParam [ Query Parameter ?]
+
 
 
