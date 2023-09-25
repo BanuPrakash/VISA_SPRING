@@ -749,3 +749,28 @@ PointCut: selected JoinPoint
 Advice: Before, After, Around, AfterThrowing, AfterReturing
 
 https://docs.spring.io/spring-framework/docs/2.0.x/reference/aop.html
+
+Annotation:
+
+@AnnotationName
+
+1) Who uses it?
+    a) COMPILER
+    b) CLASSLOADER
+    c) RUNTIME
+2) Where can i Use  it?
+    a) TYPE
+    b) METHOD
+    c) FIELD
+    d) PARAMETER
+
+Annotations can't have state and methods. Only properties can be there for annotation
+"value" is a property
+public @interface Query {
+    String value() default "";
+}
+
+@Query(value=",,,") --> setter
+
+query.value() --> getter
+

@@ -1,5 +1,6 @@
 package com.visa.shopapp.api;
 
+import com.visa.shopapp.aop.ValidateInput;
 import com.visa.shopapp.entity.Product;
 import com.visa.shopapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,7 @@ public class ProductController {
     }
     // http://localhost:8080/api/products/4
     @GetMapping("/{id}")
+    @ValidateInput(min = 3)
     public Product getProductById(@PathVariable("id") int id) {
         return orderService.getProductById(id);
     }
