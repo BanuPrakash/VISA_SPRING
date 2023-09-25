@@ -784,3 +784,8 @@ Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validati
  [Field error in object 'product' on field 'name': rejected value []; codes [NotBlank.product.name,NotBlank.name,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.name,name]; arguments []; default message [name]]; default message [Name is required]]
  
   [Field error in object 'product' on field 'price': rejected value [-8500.0]; codes [Min.product.price,Min.price,Min.double,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.price,price]; arguments []; default message [price],10]; default message [Price -8500.0 should be greater than equal to 10]] ]
+
+
+  MCQ Test for those who missed it:
+  https://www.classmarker.com/online-test/start/?quiz=dmj6507cf61d5e84
+
