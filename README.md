@@ -818,3 +818,8 @@ Using generated security password: c7457eb7-b8a3-4938-91b4-41f77a000b4a
 
 http://localhost:8080/logout
 
+=========
+
+Custom Configuration --> Security
+
+Resume @ 11:00
