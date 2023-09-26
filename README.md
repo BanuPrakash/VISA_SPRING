@@ -785,7 +785,36 @@ Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validati
  
   [Field error in object 'product' on field 'price': rejected value [-8500.0]; codes [Min.product.price,Min.price,Min.double,Min]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [product.price,price]; arguments []; default message [price],10]; default message [Price -8500.0 should be greater than equal to 10]] ]
 
-
   MCQ Test for those who missed it:
   https://www.classmarker.com/online-test/start/?quiz=dmj6507cf61d5e84
+
+================
+@ControllerAdvice, @ExceptionHandler
+@Validate @Valid, @NotBlank, @Min, @Max, @Pattern, @Future, @Past
+
+Annotation
+@Target, @RetentionPolicy [ Compiler, ClassLoader, Runtime]
+property
+
+=======
+
+Day 6
+Security: Authentication and Authorization
+
+http://localhost:8080/api/hello
+
+ <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+By including above dependency, 
+1) all resources are protected.
+2) we get login page and logout page
+3) it creates one user with username:user and password:generatedPassword
+
+
+Using generated security password: c7457eb7-b8a3-4938-91b4-41f77a000b4a
+
+http://localhost:8080/logout
 
