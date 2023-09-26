@@ -828,4 +828,48 @@ https://bcrypt-generator.com/
 
 https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter
 
+```
+@Bean
+public class MyUserDetailsManager implements UserDetailsManager {
+     protected List<UserDetails> loadUsersByUsername(String username) {
+        // SQL
+    }
+}
+```
+========
+
+Stateless.
+
+Token based Authorization --> JWT [Json Web Token]
+JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
+
+jwt token:
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+Header:
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+
+Payload:
+{
+    "sub": "banu@lucidatechnologies.com",
+    "iss": "https://security.visa.com",
+    "iat": 4535353453,
+    "exp": 7343452133,
+    "authorities": "admin,reader,writer"
+}
+
+SIGNATURE:
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  "topsecretsaltvalue234112"
+) 
+```
+
+Symmetric key: same key is used for both encryption and decryption
+Asymmetirc key: private key to generate token and public key to validate the token
 
