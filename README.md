@@ -822,4 +822,4 @@ http://localhost:8080/logout
 
 Custom Configuration --> Security
 
-Resume @ 11:00
+DAO and InMemory

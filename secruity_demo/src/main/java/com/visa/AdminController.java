@@ -5,13 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/")
-public class HelloController {
-
-    @GetMapping("hello")
-    public String sayHello() {
-        return "Welcome to Spring Security!!!";
+@RequestMapping("/admin")
+public class AdminController {
+    @GetMapping()
+    public String sayHelloAdmin() {
+        return "Welcome to Admin Page in Spring Security!!!";
     }
-
-
 }
