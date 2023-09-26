@@ -44,5 +44,6 @@ public class SecurityConfig {
                  .anyRequest().authenticated()
                  .and().formLogin()
                  .and().build();
+//        http.authorizeRequests().httpBasic(withDefaults());
     }
 }
