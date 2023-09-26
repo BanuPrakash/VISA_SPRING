@@ -823,3 +823,5 @@ http://localhost:8080/logout
 Custom Configuration --> Security
 
 DAO and InMemory
+
+https://bcrypt-generator.com/

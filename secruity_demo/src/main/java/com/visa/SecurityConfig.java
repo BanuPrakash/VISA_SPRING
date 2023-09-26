@@ -27,7 +27,18 @@ public class SecurityConfig {
     }
 
     @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .formLogin(Customizer.withDefaults())
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/api/**").hasAnyRole("ADMIN", "READ")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated())
+                .build();
+    }
+
+//    @Bean
+//    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //        http.authorizeHttpRequests(authorize -> authorize
 //                        .requestMatchers("/resources/**", "/login", "/about").permitAll()
 //                        .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -37,13 +48,13 @@ public class SecurityConfig {
 //                        .anyRequest().authenticated()
 //                );
 //        return http.build();
-        return http.authorizeRequests()
-                 .antMatchers("/api/**").hasAnyRole("READ", "ADMIN")
-                 .antMatchers("/admin/**").hasRole("ADMIN")
-                 .antMatchers("/").permitAll()
-                 .anyRequest().authenticated()
-                 .and().formLogin()
-                 .and().build();
+//        return http.authorizeRequests()
+//                 .antMatchers("/api/**").hasAnyRole("READ", "ADMIN")
+//                 .antMatchers("/admin/**").hasRole("ADMIN")
+//                 .antMatchers("/").permitAll()
+//                 .anyRequest().authenticated()
+//                 .and().formLogin()
+//                 .and().build();
 //        http.authorizeRequests().httpBasic(withDefaults());
-    }
+//    }
 }
