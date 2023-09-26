@@ -1,3 +1,5 @@
+drop table  if exists authorities;
+drop table  if exists users;
 create table users(
                 username varchar(50) not null primary key,
                 password varchar(250) not null,
