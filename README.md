@@ -920,3 +920,28 @@ eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXZpbkBnbWFpbC5jb20iLCJpYXQiOjE2OTU3OTQ2OTMsImV
 
 ADMIN:
 eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2RAZ21haWwuY29tIiwiaWF0IjoxNjk1Nzk0NzM4LCJleHAiOjE2OTU3OTYxNzgsInJvbGVzIjpbIlJPTEVfQURNSU4iXX0.4e_64ip--xC-iJLXFwLolAyB7LXSYfF6unUvwah78-g
+
+
+https://www.codejava.net/frameworks/spring-boot/spring-security-jwt-role-based-authorization
+
+```
+User and Role
+SigninRequest, SignUpRequest
+UserDao
+UserService
+AuthenticationController
+SecurityConfig:
+@Bean
+	AuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+		authProvider.setUserDetailsService(userService.userDetailsService());
+		authProvider.setPasswordEncoder(passwordEncoder());
+		return authProvider;
+	}
+
+	@Bean
+	AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+		return config.getAuthenticationManager();
+	}
+
+```
