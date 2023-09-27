@@ -914,3 +914,9 @@ public void doTask() {
 public class DefaultManager {
 
 }
+
+USER:
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJnYXZpbkBnbWFpbC5jb20iLCJpYXQiOjE2OTU3OTQ2OTMsImV4cCI6MTY5NTc5NjEzMywicm9sZXMiOlsiUk9MRV9VU0VSIl19.uQ14INdtJM2_jXyIj-01hLTzjuoLca5qWrYXjaXv3C4
+
+ADMIN:
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2RAZ21haWwuY29tIiwiaWF0IjoxNjk1Nzk0NzM4LCJleHAiOjE2OTU3OTYxNzgsInJvbGVzIjpbIlJPTEVfQURNSU4iXX0.4e_64ip--xC-iJLXFwLolAyB7LXSYfF6unUvwah78-g

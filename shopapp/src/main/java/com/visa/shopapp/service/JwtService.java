@@ -1,12 +1,15 @@
 package com.visa.shopapp.service;
 
 import java.security.Key;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -40,9 +43,14 @@ public class JwtService {
 	}
 
 	private String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+		Collection<String> authorities = userDetails.getAuthorities()
+				.stream()
+				.map(GrantedAuthority::getAuthority)
+				.collect(Collectors.toList());
 		return Jwts.builder().setClaims(extraClaims).setSubject(userDetails.getUsername())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+				.claim("roles",authorities)
 				.signWith(getSigningKey(), SignatureAlgorithm.HS256).compact();
 	}
 
