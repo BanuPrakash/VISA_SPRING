@@ -795,6 +795,8 @@ Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validati
 Annotation
 @Target, @RetentionPolicy [ Compiler, ClassLoader, Runtime]
 property
+@ValidationInput
+
 
 =======
 
@@ -873,3 +875,42 @@ HMACSHA256(
 Symmetric key: same key is used for both encryption and decryption
 Asymmetirc key: private key to generate token and public key to validate the token
 
+=====
+
+Complete Rental Application with RESTController
+
+POSTMAN
+
+
+========
+
+Day 7
+
+Security
+Spring Security
+DelegatingProxyFilter --> Filters UsernamePasswordAuthenticationFilter attemptAthentication(), successfulAuthentication()
+
+AuthenticationManager --> JdbcManager, InMemory, Ldap
+
+UserDetailsService
+List<UserDetails> findUserByName(String username) 
+
+SecurityContext
+
+InMemoryUsers, JdbcManager, BcryptPasswordEncoder
+
+SecurityFilterChain
+    permitAll(), authenticated(), antMatchers(), requestMatchers("api/**").hasAnyRole("GUEST", "ADMIN)
+
+JWT
+
+@Secured("ADMIN")
+public void doTask() {
+
+}
+
+
+@ConditionalOnMissingBean(AuthenticationManager.class)
+public class DefaultManager {
+
+}

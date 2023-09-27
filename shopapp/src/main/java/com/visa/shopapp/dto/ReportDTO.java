@@ -1,22 +1,23 @@
 package com.visa.shopapp.dto;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class ReportDTO {
-    String firstName;
-    String email;
-    Date orderDate;
-    double total;
-    String name;
-    double price;
-    int quantity;
-    double amount;
+	@JsonFormat(pattern="dd-MMM-yyyy HH:mm:ss")
+	Date orderDate;
+	double total;
+	String firstName;
+	String lastName;
+	String email;
 }
