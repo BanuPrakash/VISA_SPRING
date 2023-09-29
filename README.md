@@ -980,6 +980,29 @@ public class DiscoveryServiceApplication {
 7) Start Discoverserver
 http://localhost:8761/
 
+https://cloud.spring.io/spring-cloud-netflix/reference/html/appendix.html
+
 ======
 
 8) Student Service
+https://github.com/BanuPrakash/VISA_SPRING/tree/main/microservices/student-service.zip
+
+If done from scratch:
+dependecies: web, jpa, mysql, lombok, cloud config client, eureka discovery client,
+actuator
+
+Extract it
+
+copy it into created "empty project"
+
+File --> New -> Module From Existing Sources --> select pom.xml of "student-service"
+
+{
+    "firstname": "{{$randomFirstName}}",
+    "lastname": "{{$randomLastName}}",
+    "email": "{{$randomEmail}}",
+    "schoolId": 1
+}
+
+Resume @ 11:20
+
