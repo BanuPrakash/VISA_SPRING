@@ -1004,5 +1004,49 @@ File --> New -> Module From Existing Sources --> select pom.xml of "student-serv
     "schoolId": 1
 }
 
-Resume @ 11:20
+==================
 
+9) School Service
+If done from scratch:
+dependecies: web, jpa, mysql, lombok, cloud config client, eureka discovery client,
+actuator, feign client
+
+Feign is a declarative web service client. It makes writing web service clients easier. To use Feign create an interface and annotate it.
+
+Without Feign: we can use programatic API call using RestTemplate / WebClient/ HttpClient
+
+@SpringBootApplication
+@EnableFeignClients
+public class Application {
+
+---
+
+@FeignClient(url = "http://localhost:8080")
+public interface DemoClient {
+    @GetMapping("demo")
+    String getDemo();
+}
+
+Copy School-service into created "empty project"
+
+File -> New -> Module from Existing Sources --> pom.xml of "school-service"
+
+```
+@FeignClient(name = "student-service", url = "http://localhost:8090/api/students")
+public interface StudentClient {
+
+    @GetMapping("/school/{school-id}")
+    List<Student> findAllStudentsBySchool(@PathVariable("school-id") Integer schoolId);
+}
+
+POST http://localhost:8070/api/schools
+
+{
+    "name": "DPS",
+    "email": "dps@gmail.com"
+}
+
+```
+http://localhost:8070/api/schools/
+http://localhost:8070/api/schools/with-students/1
+Students are fetched from FeignClient --> Student Microservice
