@@ -1060,8 +1060,12 @@ https://www.baeldung.com/spring-cloud-bootstrap-properties
 
 =======
 
+create project:
 Gateway
     dependencies: gateway, eureka-client, actutator
+
+Drag it into "empty project"
+File --> New --> Existing Module --> pom.xml
 
 No need to add any code
 configure application.yml
@@ -1069,3 +1073,4 @@ configure application.yml
 http://localhost:9999/api/students
 http://localhost:9999/api/schools/with-students/1
 
+============
