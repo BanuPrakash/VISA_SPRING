@@ -980,3 +980,6 @@ public class DiscoveryServiceApplication {
 7) Start Discoverserver
 http://localhost:8761/
 
+======
+
+8) Student Service
