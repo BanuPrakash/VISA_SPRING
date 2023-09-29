@@ -10,12 +10,14 @@
         <module name="student-service" />
         <module name="school-service" />
         <module name="discovery-service" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="discovery-service" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="school-service" options="-parameters" />
       <module name="student-service" options="-parameters" />
     </option>

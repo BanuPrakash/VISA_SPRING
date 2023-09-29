@@ -1050,3 +1050,22 @@ POST http://localhost:8070/api/schools
 http://localhost:8070/api/schools/
 http://localhost:8070/api/schools/with-students/1
 Students are fetched from FeignClient --> Student Microservice
+
+Simply put: you can't. Annotations arguments must be compile-time constants. Variables from application.yml are not.
+
+bootstrap.yml
+Bootstrap.yml is a YAML configuration file that Spring Boot reads during application startup. It is used to configure the application context before the application starts.
+
+https://www.baeldung.com/spring-cloud-bootstrap-properties
+
+=======
+
+Gateway
+    dependencies: gateway, eureka-client, actutator
+
+No need to add any code
+configure application.yml
+
+http://localhost:9999/api/students
+http://localhost:9999/api/schools/with-students/1
+

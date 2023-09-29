@@ -64,6 +64,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.visa.gateway.GatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SchoolServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="school-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.visa.schoolservice.SchoolServiceApplication" />
@@ -87,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1694579690641</updated>
-      <workItem from="1695960865551" duration="6294000" />
+      <workItem from="1695960865551" duration="7452000" />
     </task>
     <servers />
   </component>
