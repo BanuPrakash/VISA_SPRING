@@ -952,4 +952,31 @@ http://localhost:8080/v3/api-docs
 
 http://localhost:8080/swagger-ui/index.html
 
-https://www.classmarker.com/online-test/start/?quiz=nfy65119aa318f3d
+============
+
+MicroServices
+ microservice architecture is a variant of the service-oriented architecture structural style. 
+ It is an architectural pattern that arranges an application as a collection of loosely coupled, fine-grained services, communicating through lightweight protocols [HTTP].
+ 
+The CAP theorem states that distributed databases can have at most two of the three properties: consistency, availability, and partition tolerance. 
+
+https://www.researchgate.net/figure/Ubers-microservice-architecture-Source-Kappagantula-2018_fig2_342124274
+
+1) Empty Project
+2) discovery-service
+    dependencies: eureka server, config client, actuator
+
+3) copy discovery-service into created "empty project"
+Setup SDK
+
+4) File --> New -> Module From Existing Sources --> select pom.xml of "discovery-service"
+
+5) @EnableEurekaServer
+@SpringBootApplication
+public class DiscoveryServiceApplication {
+
+6) copy application.yml file which as config-client, discovery-server and port details
+
+7) Start Discoverserver
+http://localhost:8761/
+
