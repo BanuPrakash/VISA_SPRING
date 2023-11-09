@@ -3,10 +3,12 @@ package com.visa.springmongo.document;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "products")
 public class Product {
 	
 	@Id
+	private String oid;
+	
 	private int id;
 	
 	// @Field("product_title") like @Column
