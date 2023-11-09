@@ -1074,3 +1074,19 @@ http://localhost:9999/api/students
 http://localhost:9999/api/schools/with-students/1
 
 ============
+
+Spring Boot / Java --> MongoDB
+
+1) spring-mongo
+
+Language: java
+Maven
+groupId: com.visa
+artifactId: spring-mongo
+package: com.visa.spring-mongo
+
+Next add dependecies
+spring web
+spring data mongoDB
+
+
