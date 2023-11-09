@@ -9,8 +9,6 @@ server:
 spring:
   application:
     name: student-service
-  config:
-    import: optional:configserver:http://localhost:8888
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/VISA_STUDENT_DB?createDatabaseIfNotExist=true

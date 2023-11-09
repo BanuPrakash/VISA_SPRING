@@ -1089,4 +1089,56 @@ Next add dependecies
 spring web
 spring data mongoDB
 
+========================
 
+
+MicroServices 
+
+A monolithic architecture is a traditional model of a software program, which is built as a unified unit that is self-contained and independent from other applications. 
+one application --> all modules [customer, product, payment, order, ...]
+
+1) Discovery Server --> Eureka Server
+ <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
+
+@EnableEurekaServer
+add details in application.properties / application.yml
+
+http://localhost:8761/
+
+2) School-service and student-service
+ <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+
+
+3) school-service 
+   <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+  </dependency>
+
+    Declarative REST client instead of programmatic client
+    Declarative:
+    ```
+    @FeignClient(name = "student-service", url = "http://localhost:8090/api/students")
+    public interface StudentClient {
+
+    @GetMapping("/school/{school-id}")
+    List<Student> findAllStudentsBySchool(@PathVariable("school-id") Integer schoolId);
+}
+    ```
+
+    Programmatic client:
+    ```
+    RestTemplate
+    String userJson = restTemplate.getForObject("/users/{id}", String.class, Map.of("id", "1"));
+
+    ResponseEntity<String> responseEntity = restTemplate.getForEntity("/users/{id}", String.class, Map.of("id", "1"));
+
+    ObjectMapper mapper = new ObjectMapper();
+    JsonNode root = mapper.readTree(responseEntity.getBody());
+    ```
