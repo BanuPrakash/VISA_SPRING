@@ -1142,3 +1142,79 @@ http://localhost:8761/
     ObjectMapper mapper = new ObjectMapper();
     JsonNode root = mapper.readTree(responseEntity.getBody());
     ```
+RDBMS vs NoSQL [MongoDB is document based, redis key/value pair, Cassandra --> column based, ... ]
+
+orders, customer, products, address
+
+{
+    id: 199
+    date:
+    customer: {
+        email: '',
+        phone: ''
+    },
+    products: [
+
+    ],
+    address: {
+
+    }
+}
+
+CQRS 
+JS --> Mongodb [ can use low level mongodb driver just like JDBC for Java]
+JS --> mongoose [ ODM like ORM {Hibernate} ]
+
+Advantages of using mongoose
+1) bring in schema
+2) validation
+3) easy to perform CRUD operations using mongoose model
+db.products.find(); becomes
+Product.findAll(); --> Product being the model
+
+---
+
+Spring boot using MongoRepository instead of JpaRepository and 
+@Document instead of @Entity
+@Field instead of @Column
+
+====================================
+
+MicroServices instead of monolithic application
+TripManagment
+DriverManagement
+CustomerManagement
+PaymentManagment
+
+* Synchronous communication between microservices ==> RESTful or GraphQL
+* Asynchronous --> Event driven ==> Kafka, Redis Pub-Sub, Kenesis, ...
+
+===========
+
+Spring Security
+
+Dependencies: web, security, jpa, h2
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+* by default all resources are protected
+* creates a default login and logout pages
+* creates a default user
+username as "user" and generated password displayed in console
+6a10bfa9-0c09-41d0-80c1-6eb2728de0cd
+
+http://localhost:8080/products
+redirects to login page ==> login then you can access all resources
+http://localhost:8080/logout
+
+ABF387E14FC53E7C1FE07F11E46930C5
+
+JSESSIONID=ABF387E14FC53E7C1FE07F11E46930C5
+
+
+-------------------------
+
+* Custom Security Configuration
