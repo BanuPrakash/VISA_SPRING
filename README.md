@@ -1226,3 +1226,26 @@ Using Cookies is stateful uses JSESSIONID to track user
 Stateless:
 Token based authorization
 
+https://spring.io/guides/tutorials/react-and-spring-data-rest/
+
+
+=======================
+
+react> npm run build
+build> will have all generated code; copy content into "src/main/resources"
+
+First check by placing html in src/main/resources
+
+http://localhost:8080/a.html
+
+====
+
+
+
+https://www.classmarker.com/online-test/start/?quiz=ace654cd08294e4e
+
+1:30 min ==> 40 MCQ questions [ java, react, js, spring boot]
+
+Before 3:30
+
+
