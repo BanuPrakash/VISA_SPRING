@@ -42,15 +42,15 @@ public class SecurityConfig {
 //				  .authorities("ROLE_ADMIN", "ROLE_READ").build());
 //	  }
 	  
-//	  @Bean
-//	  public PasswordEncoder passwordEncoder() {
-//		  return new BCryptPasswordEncoder();
-//	  }
+	  @Bean
+	  public PasswordEncoder passwordEncoder() {
+		  return new BCryptPasswordEncoder();
+	  }
 	  
 	  @Autowired
 	  DataSource ds; // pool of database connection --> application.properties
 	  
-	  @Autowired
+	  
 	  public void configureJdbcAuth(AuthenticationManagerBuilder builder) throws Exception {
 		builder.jdbcAuthentication().dataSource(ds);  
 		//https://docs.spring.io/spring-security/site/docs/5.0.x/reference/html/appendix-schema.html
