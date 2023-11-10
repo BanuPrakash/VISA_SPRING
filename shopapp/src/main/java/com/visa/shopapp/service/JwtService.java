@@ -47,9 +47,11 @@ public class JwtService {
 				.stream()
 				.map(GrantedAuthority::getAuthority)
 				.collect(Collectors.toList());
-		return Jwts.builder().setClaims(extraClaims).setSubject(userDetails.getUsername())
-				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+		return Jwts.builder()
+				.setClaims(extraClaims)
+				.setSubject(userDetails.getUsername()) 
+				.setIssuedAt(new Date(System.currentTimeMillis())) 
+				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24)) 
 				.claim("roles",authorities)
 				.signWith(getSigningKey(), SignatureAlgorithm.HS256).compact();
 	}

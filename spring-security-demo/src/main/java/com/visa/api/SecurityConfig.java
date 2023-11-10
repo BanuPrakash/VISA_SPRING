@@ -48,11 +48,12 @@ public class SecurityConfig {
 	  }
 	  
 	  @Autowired
-	  DataSource ds; // pool of database connection --> application.properties
+	  DataSource dataSource; // pool of database connection --> application.properties
 	  
-	  
-	  public void configureJdbcAuth(AuthenticationManagerBuilder builder) throws Exception {
-		builder.jdbcAuthentication().dataSource(ds);  
-		//https://docs.spring.io/spring-security/site/docs/5.0.x/reference/html/appendix-schema.html
+	  @Autowired
+	  public void configureGlobal(AuthenticationManagerBuilder auth)
+	    throws Exception {
+	      auth.jdbcAuthentication()
+	        .dataSource(dataSource);
 	  }
 }
